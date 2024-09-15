@@ -227,6 +227,11 @@ class TVDB:
         """Returns a series extended dictionary"""
         url = self.url.construct("series", id, "nextAired")
         return self.request.make_request(url, if_modified_since)
+    
+    def get_series_statuses(self, meta=None, if_modified_since=None) -> list:
+        """Returns a list of movies statuses"""
+        url = self.url.construct("series/statuses", meta=meta)
+        return self.request.make_request(url, if_modified_since)
 
     def get_all_movies(self, page=None, meta=None, if_modified_since=None) -> list:
         """Returns a list of movies"""
@@ -257,6 +262,11 @@ class TVDB:
     ) -> dict:
         """Returns a movie translation dictionary"""
         url = self.url.construct("movies", id, "translations", lang, meta=meta)
+        return self.request.make_request(url, if_modified_since)
+    
+    def get_movies_statuses(self, meta=None, if_modified_since=None) -> list:
+        """Returns a list of movies statuses"""
+        url = self.url.construct("movies/statuses", meta=meta)
         return self.request.make_request(url, if_modified_since)
 
     def get_all_seasons(self, page=None, meta=None, if_modified_since=None) -> list:
